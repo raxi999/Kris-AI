@@ -1,0 +1,28 @@
+# Bytecode & cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Environment folders
+venv/
+env/
+
+# Logs
+*.log
+
+# Environment variables
+.env
+
+# IDE configs
+.vscode/
+.idea/
+
+# OS system files
+.DS_Store
+Thumbs.db
+
+# PyInstaller
+dist/
+build/
+*.spec

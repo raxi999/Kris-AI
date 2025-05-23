@@ -1,0 +1,33 @@
+const express = require("express");
+const bodyParser = require("body-parser");
+const app = express();
+
+app.use(express.static("public"));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// Serve the main page
+app.get("/", (req, res) => {
+  res.sendFile(__dirname + "/views/index.html");
+});
+
+// Handle chat messages
+app.post("/chat", (req, res) => {
+  const userMsg = req.body.message.toLowerCase();
+  let reply = "Hey, I am Kris AI. How can I help?";
+
+  if (userMsg.includes("plan")) {
+    reply = "Let's make a great plan!";
+  } else if (userMsg.includes("study")) {
+    reply = "Study mode activated! Let's go!";
+  } else if (userMsg.includes("fact")) {
+    reply = "Checking the facts for you...";
+  }
+
+  res.json({ reply });
+});
+
+// Start the server
+const listener = app.listen(process.env.PORT || 3000, () => {
+  console.log("Your app is listening on port " + listener.address().port);
+});
